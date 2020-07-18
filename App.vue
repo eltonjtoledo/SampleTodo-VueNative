@@ -15,30 +15,18 @@
         paddingVertical: 20 }}"
       style="margin-bottom: 5;"
     >
-      <view class="tdItem" v-for="(item, index) in todo" :key="index">
-        <check-box
-          :on-change="()=>{doneItem(index)}"
-          :value="item.done"
-          style="width: 10%; padding: 5"
-        />
-        <text
-          style="width: 80%; padding: 5; font-size: 16"
-          :style="{textDecorationLine: (item.done ? 'line-through' : 'none'), color: (item.done ? '#ccc' : '#48b884')}"
-        >{{item.name}}</text>
-        <touchable-opacity
-          :on-press="()=>{deleteItem(index)}"
-          style="width: 10%; padding: 5; background-color: #f00"
-        >
-          <text style="color: #fff; text-align: center; align-content: center;">X</text>
-        </touchable-opacity>
-      </view>
+      <todo-item @delete="deleteItem" @done="doneItem" :dados="todo"></todo-item>
     </scroll-view>
   </view>
 </template>
 
 <script>
 console.disableYellowBox = true;
+import TodoItem from './componetes/TodoItem';
 export default {
+components: {
+  'todo-item': TodoItem
+  },
   data() {
     return {
       inputValue: "",
@@ -131,16 +119,5 @@ export default {
   width: 92%;
   margin-left: 4%;
   margin-top: 15;
-}
-
-.tdItem {
-  padding: 5;
-  width: 96%;
-  margin-left: 2%;
-  display: flex;
-  flex-direction: row;
-  margin-top: 5;
-  border-bottom-color: #48b884;
-  border-bottom-width: 2;
 }
 </style>
