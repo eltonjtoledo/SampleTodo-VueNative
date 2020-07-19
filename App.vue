@@ -1,22 +1,22 @@
 <template>
   <view style="flex: 1">
+    <!-- Component StatusBar -->
     <status-bar />
     <view class="header bg_gray">
       <Image class="logo" :source="require('./assets/logo.png')" />
       <text-input v-model="inputValue" class="box92 input" />
 
       <touchable-opacity class="box92 bg_green btn_add" :on-press="addItem">
-        <text style="color: #fff; text-align: center; font-size: 17">Adicionar Tarefa</text>
+        <text style="color: #fff; text-align: center; font-size: 17">Add new task</text>
       </touchable-opacity>
     </view>
 
-    <scroll-view
-      :content-container-style="{contentContainer: {
-        paddingVertical: 20 }}"
-      style="margin-bottom: 5;" >
+    <scroll-view :content-container-style="{contentContainer: {
+        paddingVertical: 20 }}" style="margin-bottom: 5;" >
+      <!-- Component todoItem -->
       <todo-item @delete="deleteItem" @done="doneItem" :dados="todo"></todo-item>
     </scroll-view>
-
+ <!-- component Conection -->
 <Connection/>
   </view>
 </template>
@@ -35,33 +35,13 @@ components: {
     return {
       inputValue: "",
       check: false,
-      conected: true,
       todo: [
-        { id: 1, name: "Atividade 1", done: false },
-        { id: 2, name: "Atividade nova", done: false },
-        { id: 1, name: "Atividade 1", done: false },
-        { id: 2, name: "Atividade nova", done: false },
-        { id: 1, name: "Atividade 1", done: false },
-        { id: 2, name: "Atividade nova", done: false },
-        { id: 1, name: "Atividade 1", done: false },
-        { id: 2, name: "Atividade nova", done: false },
-        { id: 1, name: "Atividade 1", done: false },
-        { id: 2, name: "Atividade nova", done: false },
-        { id: 1, name: "Atividade 1", done: false },
-        { id: 2, name: "Atividade nova", done: false },
-        { id: 1, name: "Atividade 1", done: false },
-        { id: 2, name: "Atividade nova", done: false },
-        { id: 1, name: "Atividade 1", done: false },
-        { id: 2, name: "Atividade nova", done: false },
-        { id: 1, name: "Atividade 1", done: false },
-        { id: 2, name: "Atividade nova", done: false },
-        { id: 1, name: "Atividade 1", done: false },
-        { id: 2, name: "Atividade nova", done: false },
-        { id: 1, name: "Atividade 1", done: false },
-        { id: 2, name: "Atividade nova", done: false },
-        { id: 1, name: "Atividade 1", done: false },
-        { id: 2, name: "Atividade nova", done: false },
-        { id: 3, name: "Atividade 3", done: false }
+        { id: 1, name: "Add star to this repository", done: false },
+        { id: 2, name: "Fork this project", done: false },
+        { id: 3, name: "Install all dependencies", done: false },
+        { id: 4, name: "Edit the app", done: false },
+        { id: 5, name: "Share with community", done: false },
+        { id: 6, name: "activities completed", done: true },
       ]
     };
   },
@@ -74,9 +54,6 @@ components: {
       }
     },
     doneItem(index) {
-            NetInfo.fetch().then(state => {
-        this.conection = state;
-      });
       setTimeout(() => {this.order()}, 1000);
       this.todo[index].done = !this.todo[index].done;
     },
@@ -92,9 +69,6 @@ components: {
         }
       });
     },
-    modify(){
-        this.conected = !this.conected
-    }
   }
 };
 </script>
