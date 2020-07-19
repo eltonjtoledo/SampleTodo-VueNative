@@ -24,13 +24,7 @@ You can also use the Expo app to run this project.
 ---
 screen recording of basic functions, add, done, undone, and delete activities.
 
-<img rel="screen recoder of SampleTodo VueNative add activity" src="./Screenshots/ScreenRecorderAdd.gif" width="24%">
-
-<img rel="screen recoder of SampleTodo VueNative done activity" src="./Screenshots/ScreenRecorderDone.gif" width="24%">
-
-<img rel="screen recoder of SampleTodo VueNative undone activity" src="./Screenshots/ScreenRecorderUndo.gif" width="24%">
-
-<img rel="screen recoder of SampleTodo VueNative delete activity" src="./Screenshots/ScreenRecorderDelete.gif" width="24%">
+<img rel="screen recoder of SampleTodo VueNative add activity" src="./Screenshots/ScreenRecorderAdd.gif" width="24%"> <img rel="screen recoder of SampleTodo VueNative done activity" src="./Screenshots/ScreenRecorderDone.gif" width="24%"> <img rel="screen recoder of SampleTodo VueNative undone activity" src="./Screenshots/ScreenRecorderUndo.gif" width="24%"> <img rel="screen recoder of SampleTodo VueNative delete activity" src="./Screenshots/ScreenRecorderDelete.gif" width="24%">
 
 ## **Connection status**
 ---
