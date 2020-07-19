@@ -5,7 +5,7 @@
         :value="item.done" style="width: 10%; padding: 5"/>
       <text style="width: 80%; padding: 5; font-size: 16"
         :style="{textDecorationLine: (item.done ? 'line-through' : 'none'), color: (item.done ? '#ccc' : '#48b884')}">{{item.name}}</text>
-      <touchable-opacity :on-press="()=>{$emit('delete', index)}" style="width: 10%; padding: 5; background-color: #f00">
+      <touchable-opacity :on-press="()=>{$emit('delete', index)}" style="width: 10%; border-radius: 5; padding: 5; background-color: #f00">
         <text style="color: #fff; text-align: center; align-content: center;">X</text>
       </touchable-opacity>
     </view>
@@ -14,8 +14,6 @@
 <script>
 export default {
   props: {dados: {type: Array}},
-  methods: {},
-  data() {return {};}
 };
 </script>
 

@@ -13,42 +13,55 @@
     <scroll-view
       :content-container-style="{contentContainer: {
         paddingVertical: 20 }}"
-      style="margin-bottom: 5;"
-    >
+      style="margin-bottom: 5;" >
       <todo-item @delete="deleteItem" @done="doneItem" :dados="todo"></todo-item>
     </scroll-view>
+
+<Connection/>
   </view>
 </template>
 
 <script>
 console.disableYellowBox = true;
 import TodoItem from './componetes/TodoItem';
+import Connection from './componetes/ConnectionComponent';
+
 export default {
 components: {
-  'todo-item': TodoItem
+  'todo-item': TodoItem,
+  'Connection': Connection
   },
   data() {
     return {
       inputValue: "",
       check: false,
+      conected: true,
       todo: [
         { id: 1, name: "Atividade 1", done: false },
         { id: 2, name: "Atividade nova", done: false },
-        { id: 3, name: "Atividade 3", done: false },
-        { id: 4, name: "Atividade 4", done: false },
-        { id: 5, name: "Atividade 5", done: false },
-        { id: 6, name: "Atividade 6", done: false },
-        { id: 7, name: "Atividade 7", done: false },
-        { id: 8, name: "Atividade 8", done: false },
-        { id: 9, name: "Atividade 9", done: false },
-        { id: 10, name: "Atividade 10", done: false },
-        { id: 11, name: "Atividade 11", done: false },
-        { id: 12, name: "Atividade 12", done: false },
-        { id: 13, name: "Atividade 13", done: false },
-        { id: 14, name: "Atividade 14", done: false },
-        { id: 15, name: "Atividade 15", done: false },
-        { id: 16, name: "Atividade 16", done: false },
-        { id: 17, name: "Atividade 17", done: false }
+        { id: 1, name: "Atividade 1", done: false },
+        { id: 2, name: "Atividade nova", done: false },
+        { id: 1, name: "Atividade 1", done: false },
+        { id: 2, name: "Atividade nova", done: false },
+        { id: 1, name: "Atividade 1", done: false },
+        { id: 2, name: "Atividade nova", done: false },
+        { id: 1, name: "Atividade 1", done: false },
+        { id: 2, name: "Atividade nova", done: false },
+        { id: 1, name: "Atividade 1", done: false },
+        { id: 2, name: "Atividade nova", done: false },
+        { id: 1, name: "Atividade 1", done: false },
+        { id: 2, name: "Atividade nova", done: false },
+        { id: 1, name: "Atividade 1", done: false },
+        { id: 2, name: "Atividade nova", done: false },
+        { id: 1, name: "Atividade 1", done: false },
+        { id: 2, name: "Atividade nova", done: false },
+        { id: 1, name: "Atividade 1", done: false },
+        { id: 2, name: "Atividade nova", done: false },
+        { id: 1, name: "Atividade 1", done: false },
+        { id: 2, name: "Atividade nova", done: false },
+        { id: 1, name: "Atividade 1", done: false },
+        { id: 2, name: "Atividade nova", done: false },
+        { id: 3, name: "Atividade 3", done: false }
       ]
     };
   },
@@ -61,6 +74,9 @@ components: {
       }
     },
     doneItem(index) {
+            NetInfo.fetch().then(state => {
+        this.conection = state;
+      });
       setTimeout(() => {this.order()}, 1000);
       this.todo[index].done = !this.todo[index].done;
     },
@@ -75,6 +91,9 @@ components: {
           return true;
         }
       });
+    },
+    modify(){
+        this.conected = !this.conected
     }
   }
 };
