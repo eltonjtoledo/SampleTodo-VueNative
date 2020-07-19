@@ -36,7 +36,7 @@ export default {
         applyMessage() {
             setTimeout(() => {
                 this.show = false
-            }, 2000);
+            }, 3000);
         }
     },
     watch: {
