@@ -57,40 +57,38 @@ export default {
         }
     },
     mounted() {
-    
+
     },
     data() {
         return {
             inputValue: "",
             check: false,
             auth: "",
-            password: "",
-            email: "",
+            password: "123456",
+            email: "eltonjtoledo@gmail.com",
             todo: []
         };
     },
     methods: {
-        login(){
+        login() {
             firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(result => {
                 this.auth = result.user.uid;
                 this.loadTasks();
             }).catch(reason => {
-               this.auth = "Anonymus";// Remove this line to authenticate
+                this.auth = "Anonymus"; // Remove this line to authenticate
                 console.log(reason);
             });
         },
         loadTasks() {
             firebase.database().ref('/tasks/').child(this.auth).on("value", (snapShot) => {
                 this.todo = [];
-
                 for (const iterator in snapShot.val()) {
                     let itm = snapShot.val()[iterator];
                     itm["id"] = iterator;
                     this.todo.push(itm)
-                    console.log(itm);
                 }
             });
-            
+
         },
         addItem() {
             if (this.inputValue != "") {
@@ -99,29 +97,17 @@ export default {
                     done: false
                 })
                 this.inputValue = "";
-            } 
+            }
         },
         doneItem(index) {
-            console.log(this.todo[index]);
-
-            this.todo[index].done = !this.todo[index].done;
+            firebase.database().ref('/tasks/').child(this.auth).child(this.todo[index].id).set({
+                name: this.todo[index].name,
+                done: !this.todo[index].done
+            });
         },
         deleteItem(index) {
             this.todo.splice(index, 1);
-        },
-        order() {
-            const itens = Object.values(this.todo);
-            
-            itens.sort((a, b) => {
-                console.log('_ g');
-                console.log(b.done);
-                if (a.done < b.done) {
-                    return false;
-                } else {
-                    return true;
-                }
-            });
-        },
+        }
     }
 };
 </script>
