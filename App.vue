@@ -57,7 +57,7 @@ export default {
         }
     },
     mounted() {
-
+    
     },
     data() {
         return {
@@ -66,70 +66,55 @@ export default {
             auth: "",
             password: "",
             email: "",
-            todo: [{
-                    id: 1,
-                    name: "Add star to this repository",
-                    done: false
-                },
-                {
-                    id: 2,
-                    name: "Fork this project",
-                    done: false
-                },
-                {
-                    id: 3,
-                    name: "Install all dependencies",
-                    done: false
-                },
-                {
-                    id: 4,
-                    name: "Edit the app",
-                    done: false
-                },
-                {
-                    id: 5,
-                    name: "Share with community",
-                    done: false
-                },
-                {
-                    id: 6,
-                    name: "activities completed",
-                    done: true
-                },
-            ]
+            todo: []
         };
     },
     methods: {
-      login(){
-        firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(result => {
-            this.auth = result.user.uid;
-        }).catch(reason => {
-            // Remove this line to authenticate
-            this.auth = "Anonymus";
-            console.log(reason);
-        });
-      },
+        login(){
+            firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(result => {
+                this.auth = result.user.uid;
+                this.loadTasks();
+            }).catch(reason => {
+               this.auth = "Anonymus";// Remove this line to authenticate
+                console.log(reason);
+            });
+        },
+        loadTasks() {
+            firebase.database().ref('/tasks/').child(this.auth).on("value", (snapShot) => {
+                this.todo = [];
+
+                for (const iterator in snapShot.val()) {
+                    let itm = snapShot.val()[iterator];
+                    itm["id"] = iterator;
+                    this.todo.push(itm)
+                    console.log(itm);
+                }
+            });
+            
+        },
         addItem() {
             if (this.inputValue != "") {
-                this.todo.push({
+                firebase.database().ref('/tasks/').child(this.auth).push({
                     name: this.inputValue,
                     done: false
-                });
+                })
                 this.inputValue = "";
-                this.order();
-            }
+            } 
         },
         doneItem(index) {
-            setTimeout(() => {
-                this.order()
-            }, 1000);
+            console.log(this.todo[index]);
+
             this.todo[index].done = !this.todo[index].done;
         },
         deleteItem(index) {
             this.todo.splice(index, 1);
         },
         order() {
-            this.todo.sort((a, b) => {
+            const itens = Object.values(this.todo);
+            
+            itens.sort((a, b) => {
+                console.log('_ g');
+                console.log(b.done);
                 if (a.done < b.done) {
                     return false;
                 } else {
