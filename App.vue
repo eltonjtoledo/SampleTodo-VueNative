@@ -37,13 +37,13 @@ import * as firebase from 'firebase';
 
 // Initialize Firebase
 const firebaseConfig = {
-    apiKey: "AIzaSyDDcRAnV7Ol6OkdWNWvNd8TCDOsVaoMsW0",
-    authDomain: "teste-web-56cd6.firebaseapp.com",
-    databaseURL: "https://teste-web-56cd6.firebaseio.com",
-    projectId: "teste-web-56cd6",
-    storageBucket: "teste-web-56cd6.appspot.com",
-    messagingSenderId: "1306497564",
-    appId: "1:1306497564:web:3c0b8853e087c7ab1805d9"
+    apiKey: "",
+    authDomain: "",
+    databaseURL: "",
+    projectId: ",
+    storageBucket: "",
+    messagingSenderId: "",
+    appId: ""
 };
 
 export default {
