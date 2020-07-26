@@ -64,8 +64,8 @@ export default {
             inputValue: "",
             check: false,
             auth: "",
-            password: "123456",
-            email: "eltonjtoledo@gmail.com",
+            password: "",
+            email: "",
             todo: []
         };
     },
@@ -106,7 +106,9 @@ export default {
             });
         },
         deleteItem(index) {
-            this.todo.splice(index, 1);
+            firebase.database().ref('/tasks/').child(this.auth).child(this.todo[index].id).remove((e)=>{
+                console.log(e);
+            })
         }
     }
 };
