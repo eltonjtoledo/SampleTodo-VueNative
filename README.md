@@ -10,6 +10,7 @@ A vue-native project created to test this tool.
 git clone https://github.com/eltonjtoledo/SampleTodo-VueNative.git
 cd ./SampleTodo-VueNative
 npm install
+expo install firebase
 ````
 If you have an Android or IOS emulator, run the commands on your terminal.
 
@@ -19,6 +20,11 @@ or
 react-native run-ios
 ````
 You can also use the Expo app to run this project.
+## Some useful links
+---
+- [Vue-native documentation](https://vue-native.io)
+- [Using Firebase with Expo](https://docs.expo.io/guides/using-firebase/)
+- [I made some videos about vue-native on my youtube channel in Portuguese.](https://vue-native.io)
 
 ## **Screen Recording** 
 ---
@@ -31,8 +37,4 @@ screen recording of basic functions, add, done, undone, and delete activities.
 Displayed when the connection changes status and hides after 3 seconds.
 
 <img alt="screenshot of SampleTodo VueNative message online" src="./Screenshots/screenshotOnline.jpeg" width="25%"> <img rel="screenshot of SampleTodo VueNative message offline" src="./Screenshots/screenshotOffline.jpeg" width="25%">
-
-## Some useful links
-- [Vue-native documentation](https://vue-native.io)
-- [I made some videos about vue-native on my youtube channel in Portuguese.](https://vue-native.io)
 
