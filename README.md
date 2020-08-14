@@ -24,7 +24,7 @@ You can also use the Expo app to run this project.
 ---
 - [Vue-native documentation](https://vue-native.io)
 - [Using Firebase with Expo](https://docs.expo.io/guides/using-firebase/)
-- [I made some videos about vue-native on my youtube channel in Portuguese.](https://vue-native.io)
+- [I made some videos about vue-native on my youtube channel in Portuguese.](https://www.youtube.com/watch?v=W4oviCwxsHs)
 
 ## **Screen Recording** 
 ---
