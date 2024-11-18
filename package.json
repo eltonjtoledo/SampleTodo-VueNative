@@ -17,7 +17,7 @@
     "vue-native-core": "^0.1.4",
     "vue-native-helper": "^0.1.4",
     "vue-native-scripts": "^0.1.4",
-    "firebase": "7.9.0"
+    "firebase": "10.9.0"
   },
   "devDependencies": {
     "@babel/core": "^7.10.3",
